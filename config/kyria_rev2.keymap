@@ -12,14 +12,25 @@
 
 / {
     macros {
+    macrotest: macrotest {
+        label = "macrotest";
+        compatible = "zmk,behavior-macro";
+        #binding-cells = <0>;
+        bindings
+            = <&macro_press &kp RSHIFT>
+            , <&macro_tap &kp A &kp B &kp C &kp D &kp E &kp F &kp G &kp H &kp I &kp J &kp K &kp L &kp M &kp N &kp O &kp P>
+            , <&macro_release &kp RSHIFT>
+            ;
+    };
+
         alfred: alfred {
             label = "alfred";
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp RCMD>
+                = <&macro_press &kp LCMD>
                 , <&macro_tap &kp SPACE>
-                , <&macro_release &kp RCMD>
+                , <&macro_release &kp LCMD>
                 ;
         };
         copy: copy {
@@ -27,9 +38,19 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&macro_press &kp GUI>
+                = <&macro_press &kp LCMD>
                 , <&macro_tap &kp I>
-                , <&macro_release &kp GUI>
+                , <&macro_release &kp LCMD>
+                ;
+        };
+        paste: paste {
+            label = "paste";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RCMD>
+                , <&macro_tap &kp DOT>
+                , <&macro_release &kp RCMD>
                 ;
         };
         YT_faster: YT_faster {
@@ -49,16 +70,6 @@
             bindings
                 = <&macro_press &kp RSHIFT>
                 , <&macro_tap &kp W>
-                , <&macro_release &kp RSHIFT>
-                ;
-        };
-        paste: paste {
-            label = "paste";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp RSHIFT>
-                , <&macro_tap &kp DOT>
                 , <&macro_release &kp RSHIFT>
                 ;
         };
@@ -106,7 +117,7 @@
 	                            &kp K_MUTE &mt LCTRL &copy &mt LALT &paste &mt LCMD SPACE &alfred  &kp DEL    &mt RCMD SPACE &kp BSPC &kp SQT &kp C_PLAY_PAUSE
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
     lower_layer {
@@ -119,7 +130,7 @@
 	&mt ESC TAB     &kp Q &kp W &kp E      &kp R           &kp T                                                           &kp N7   &kp N8   &kp N9   &kp O   &kp P    &kp LEFT_BRACKET
 	&mt LSHIFT LPAR &kp A &kp S &kp D      &kp F           &kp G                                                           &kp N4   &kp N5   &kp N6   &kp L   &kp SEMI &mt RSHIFT RPAR
 	&tog LOWER      &kp Z &kp X &kp C      &kp V           &kp B           &kp LSHFT &YT_faster       &omnifocus &kp LSHFT &kp N1   &kp N2   &kp N3   &kp DOT &kp FSLH &kp RETURN
-	                            &kp K_MUTE &mt LCTRL K_PASTE &mt LALT C_AC_PASTE &mt LCMD SPACE &YT_slower  &kp BSPC   &kp RET   &kp N0   &kp SQT  &kp RBRC
+	                            &kp K_MUTE &macrotest &mt LALT &macrotest &mt LCMD SPACE &YT_slower  &kp BSPC   &kp RET   &kp N0   &kp SQT  &kp RBRC
 			>;
 
 			sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
