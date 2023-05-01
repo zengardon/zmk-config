@@ -7,6 +7,10 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 
+#define DEFAULT 0
+#define LOWER   1
+#define NONE 0
+
 / {
 behaviors {
   td: tapdance {
@@ -39,6 +43,26 @@ behaviors {
                 = <&macro_press &kp RCMD>
                 , <&macro_tap &kp I>
                 , <&macro_release &kp RCMD>
+                ;
+        };
+        YT_faster: YT_faster {
+            label = "YT_faster";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RSHIFT>
+                , <&macro_tap &kp E>
+                , <&macro_release &kp RSHIFT>
+                ;
+        };
+        YT_slower: YT_slower {
+            label = "YT_slower";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&macro_press &kp RSHIFT>
+                , <&macro_tap &kp W>
+                , <&macro_release &kp RSHIFT>
                 ;
         };
         paste: paste {
@@ -87,15 +111,32 @@ behaviors {
 // |  ESC    |  '  |  ,  |  .   |  P        |  Y        |                                              |  F   |  G   |  C   |  R  |  L  |   /      |
 // | SHIFT ( |  A  |  O  |  E   |  U        |  I        |                                              |  D   |  H   |  T   |  N  |  S  |  ) SHIFT |
 // | LOWER   |  ;  |  Q  |  J   |  K        |  X        |  NASA | COMMENT  ||     || OMNIFOCUS | NASA  |  B   |  M   |  W   |  V  |  Z  |   RETURN |
-//                       | KNOB | CTRL COPY | OPT PASTE |  ---  | ALFRED   ||     || BKSP      |  ---  | DEL  | -    | PLAY |
+//                       | KNOB | CTRL COPY | OPT PASTE |  ---  | ALFRED   ||     || BKSP      |  ---  | DEL  |  -   | PLAY |
 			bindings = <
-	&mt ESC TAB   &kp Q &kp W &td EXCL E &kp R &kp T                                                &kp Y &kp U  &kp I     &kp O   &kp P    &kp LEFT_BRACKET
-	&mt LSHIFT LPAR   &kp A &kp S &kp D &kp F &kp G                                                &kp H &kp J  &kp K     &kp L   &kp SEMI &mt RSHIFT RPAR
-	&kp SPACE &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp &comment          &omnifocus &kp LSHFT &kp N &kp M  &kp COMMA &kp DOT &kp FSLH &kp RETURN
-	                 &kp K_MUTE &mt LCTRL &copy &mt LALT &paste &mt LCMD SPACE &alfred        &kp BSPC  &mt RCMD SPACE  &kp DEL &kp SINGLE_QUOTE &kp C_PLAY_PAUSE
+	&mt ESC TAB   &kp Q &kp W &td EXCL E &kp R &kp T                                               &kp Y   &kp U    &kp I     &kp O   &kp P    &kp LEFT_BRACKET
+	&mt LSHIFT LPAR   &kp A &kp S &kp D &kp F &kp G                                                &kp H   &kp J    &kp K     &kp L   &kp SEMI &mt RSHIFT RPAR
+	&tog LOWER &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp &comment          &omnifocus &kp LSHFT  &kp N   &kp M    &kp COMMA &kp DOT &kp FSLH &kp RETURN
+  &kp K_MUTE &mt LCTRL &copy &mt LALT &paste &mt LCMD SPACE &alfred  &kp BSPC   &mt RCMD SPACE   &kp DEL &kp SINGLE_QUOTE &kp C_PLAY_PAUSE
 			>;
 
 			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
+
+    lower_layer {
+// ---------------------------------------------------------------------------------------------------------------------------------
+// |  ESC    |  '  |  ,  |  .   |  P        |  Y        |                                              |  7   |  8   |  9   |  R  |  L  |   /      |
+// | SHIFT ( |  A  |  O  |  E   |  U        |  I        |                                              |  4   |  5   |  6   |  N  |  S  |  ) SHIFT |
+// | LOWER   |  ;  |  Q  |  J   |  K        |  X        |  NASA | FASTER   ||     || OMNIFOCUS | ENTER |  1   |  2   |  3   |  V  |  Z  |   RETURN |
+//                       | KNOB | CTRL COPY | OPT PASTE |  ---  | SLOWER   ||     || BKSP      |  ---  |  0   |  -   |  +   |
+      bindings = <
+  &mt ESC TAB   &kp Q &kp W &td EXCL E &kp R &kp T                                          &kp KP_N7 &kp KP_N8        &kp KP_N9     &kp O   &kp P    &kp LEFT_BRACKET
+  &mt LSHIFT LPAR   &kp A &kp S &kp D &kp F &kp G                                           &kp KP_N4 &kp KP_N5        &kp KP_N6     &kp L   &kp SEMI &mt RSHIFT RPAR
+  &tog LOWER &kp Z &kp X &kp C &kp V &kp B &kp LSHFT &kp YT_faster    &omnifocus &kp LSHFT  &kp KP_N1 &kp KP_N2        &kp KP_N3 &kp DOT &kp FSLH &kp RETURN
+  &kp K_MUTE &mt LCTRL &copy &mt LALT &paste &mt LCMD SPACE YT_slower &kp BSPC   &kp RETURN &kp KP_N0 &kp SINGLE_QUOTE &kp KP_PLUS
+      >;
+
+      sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+    };
+
 	};
 };
