@@ -113,13 +113,13 @@
 // ---------------------------------------------------------------------------------------------------------------------------------
 // |  ESC    |  '  |  ,  |  .   |  P        |  Y        |                                              |  7   |  8   |  9   |  R  |  L  |   /      |
 // | SHIFT ( |  A  |  O  |  E   |  U        |  I        |                                              |  4   |  5   |  6   |  N  |  S  |  ) SHIFT |
-// | LOWER   |  ;  |  Q  |  J   |  K        |  X        |  NASA | COMMENT  ||     || OMNIFOCUS | ENTER |  1   |  2   |  3   |  V  |  Z  |   RETURN |
-//                       | KNOB | CTRL COPY | OPT PASTE |  ---  | ALFRED   ||     || BKSP      |  ---  |  0   |  -   |  +   |
+// | LOWER   |  ;  |  Q  |  J   |  K        |  X        |  NASA | FASTER   ||     || OMNIFOCUS | ENTER |  1   |  2   |  3   |  V  |  Z  |   RETURN |
+//                       | KNOB | CTRL COPY | OPT PASTE |  ---  | SLOWER   ||     || BKSP      |  ---  |  0   |  -   |  +   |
 			bindings = <
-	&mt ESC TAB     &kp Q &kp W &kp E      &kp R           &kp T                                                        &kp N7   &kp N8   &kp N9   &kp O   &kp P    &kp LEFT_BRACKET
-	&mt LSHIFT LPAR &kp A &kp S &kp D      &kp F           &kp G                                                        &kp N4   &kp N5   &kp N6   &kp L   &kp SEMI &mt RSHIFT RPAR
-	&tog LOWER      &kp Z &kp X &kp C      &kp V           &kp B           &kp LSHFT &kp &comment  &omnifocus &kp LSHFT &kp N1   &kp N2   &kp N3   &kp DOT &kp FSLH &kp RETURN
-	                            &kp K_MUTE &mt LCTRL &copy &mt LALT &paste &mt LCMD SPACE &alfred  &kp BSPC   &kp RET   &kp N0   &kp SQT  &kp PLUS
+	&mt ESC TAB     &kp Q &kp W &kp E      &kp R           &kp T                                                           &kp N7   &kp N8   &kp N9   &kp O   &kp P    &kp LEFT_BRACKET
+	&mt LSHIFT LPAR &kp A &kp S &kp D      &kp F           &kp G                                                           &kp N4   &kp N5   &kp N6   &kp L   &kp SEMI &mt RSHIFT RPAR
+	&tog LOWER      &kp Z &kp X &kp C      &kp V           &kp B           &kp LSHFT &YT_faster       &omnifocus &kp LSHFT &kp N1   &kp N2   &kp N3   &kp DOT &kp FSLH &kp RETURN
+	                            &kp K_MUTE &mt LCTRL &copy &mt LALT &paste &mt LCMD SPACE &YT_slower  &kp BSPC   &kp RET   &kp N0   &kp SQT  &kp PLUS
 			>;
 
 			sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
