@@ -24,7 +24,7 @@
 	                 &kp K_MUTE &mt LCTRL O &mt LALT A &kp SPACE &kp ESC        &kp BSPC  &kp SPACE  &kp DEL &kp BSPC &kp HOME
 			>;
 
-			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+			sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
 		};
 	};
 };
