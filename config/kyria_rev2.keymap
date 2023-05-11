@@ -14,17 +14,15 @@
     tapping-term-ms = <600>;
 };
 
-    behaviors {
-        td_dot: tap_dance_dot {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_dot";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp E>, <&kp EXCLAMATION>;
-        };
-    };
-
 / {
+td_dot: tap_dance_dot {
+    compatible = "zmk,behavior-tap-dance";
+    label = "TAP_DANCE_dot";
+    #binding-cells = <0>;
+    tapping-term-ms = <200>;
+    bindings = <&kp E>, <&kp EXCLAMATION>;
+};
+
     macros {
         alfred: alfred {
             label = "alfred";
